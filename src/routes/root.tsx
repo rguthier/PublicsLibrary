@@ -4,7 +4,7 @@ export default function Root() {
     return (
       <div id="container">
         <div id="sidebar">
-          <h1>React Router Contacts</h1>
+          <h1>The Public's Library</h1>
           <div>
             <form id="search-form" role="search">
               <input
@@ -19,10 +19,6 @@ export default function Root() {
                 aria-hidden
                 hidden={true}
               />
-              <div
-                className="sr-only"
-                aria-live="polite"
-              ></div>
             </form>
             <form method="post">
               <button type="submit">New</button>
@@ -31,10 +27,10 @@ export default function Root() {
           <nav>
             <ul>
               <li>
-                <Link to={`/contacts/1`}>Your Name</Link>
+                <Link to={`/`}>Profile</Link>
               </li>
               <li>
-                <Link to={`/contacts/2`}>Your Friend</Link>
+                <Link to={`/browse`}>Browse</Link>
               </li>
             </ul>
           </nav>

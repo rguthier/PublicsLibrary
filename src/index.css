@@ -62,6 +62,7 @@ button:focus-visible {
 #sidebar {
   border: 2px solid;
   height: 95vh;
+  max-width: 30vw;
 }
 
 @media (prefers-color-scheme: light) {

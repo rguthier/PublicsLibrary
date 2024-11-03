@@ -4,7 +4,7 @@ function RegistrationForm() {
     return (
         <div>
             <h2>User Registration</h2>
-            // replace the your_server_endpoint with actual database once we've set it up example "http://localhost:5000/api/register"
+            {/* // replace the your_server_endpoint with actual database once we've set it up example "http://localhost:5000/api/register" */}
             <form action="your_server_endpoint" method="POST" encType="multipart/form-data">
                 <label htmlFor="username">Username:</label>
                 <input type="text" id="username" name="username" required /><br /><br />

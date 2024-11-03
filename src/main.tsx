@@ -8,6 +8,8 @@ import "./index.css";
 import Root from "./routes/root"
 import ErrorPage from "./error";
 import BrowseBooks from "./routes/browse";
+import RegistrationPage from "./routes/registration";
+import ProfilePage from "./routes/profile";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
       {
         path: "/browse",
         element: <BrowseBooks />
+      },
+      {
+        path: "/registration",
+        element: <RegistrationPage />
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />
       }
     ]
   },

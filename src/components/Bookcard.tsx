@@ -1,8 +1,16 @@
 // // src/components/BookCard.jsx
-import React from 'react';
 
-
-const BookCard = ({ image, title, author, description }) => {
+export default function BookCard({
+  image,
+  title,
+  author,
+  description,
+}: {
+  image?: string;
+  title: string;
+  author: string;
+  description?: string;
+}) {
   return (
     <div className="book-card">
       <img src={image} alt={`${title} cover`} className="book-image" />
@@ -14,9 +22,7 @@ const BookCard = ({ image, title, author, description }) => {
       </div>
     </div>
   );
-};
-
-export default BookCard;
+}
 
 // src/components/BookCard.jsx
 // import React from 'react';

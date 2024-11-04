@@ -1,8 +1,5 @@
 // src/components/FeaturedBooks.jsx
-import React from 'react';
-import BookCard from '../components/Bookcard';
-
-
+import BookCard from "../components/Bookcard";
 
 const FeaturedBooks = () => (
   <section className="featured-books">

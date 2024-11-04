@@ -1,6 +1,5 @@
 // src/components/Hero.jsx
-import React from 'react';
-import '../pages/Hero.css'
+import "../pages/Hero.css";
 const Hero = () => (
   <section className="hero">
     <div className="hero-content">

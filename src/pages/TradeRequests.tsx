@@ -1,6 +1,4 @@
-import React from 'react';
-
-function TradeRequests() {
+export default function TradeRequests() {
   return (
     <div className="trade-requests">
       <h1>Trade Requests</h1>
@@ -8,5 +6,3 @@ function TradeRequests() {
     </div>
   );
 }
-
-export default TradeRequests;

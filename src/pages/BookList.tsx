@@ -1,17 +1,16 @@
 // src/components/BookList.jsx
-import React from 'react';
-import BookCard from '../components/Bookcard.jsx';
-import './BookList.css';
+import BookCard from "../components/Bookcard.js";
+import "./BookList.css";
 
 const BookList = () => {
   // Handle horizontal scroll on wheel event
-  const handleScroll = (event) => {
+  const handleScroll = (event: any) => {
     const container = event.currentTarget;
     const scrollAmount = event.deltaY;
     container.scrollTo({
       top: 0,
       left: container.scrollLeft + scrollAmount,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 

@@ -1,7 +1,4 @@
 // src/components/Footer.jsx
-import React from 'react';
-
-
 const Footer = () => (
   <footer>
     <div className="footer-content">

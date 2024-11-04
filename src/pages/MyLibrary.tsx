@@ -1,6 +1,4 @@
-import React from 'react';
-
-function MyLibrary() {
+export default function MyLibrary() {
   return (
     <div className="my-library">
       <h1>My Library</h1>
@@ -8,5 +6,3 @@ function MyLibrary() {
     </div>
   );
 }
-
-export default MyLibrary;

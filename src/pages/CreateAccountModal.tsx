@@ -1,6 +1,5 @@
 // src/components/CreateAccountModal.jsx
-import React from 'react';
-import './CreateAccountModal.css'; // Add styles for modal
+import "./CreateAccountModal.css"; // Add styles for modal
 
 const CreateAccountModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null; // Don't render if not open
@@ -8,7 +7,9 @@ const CreateAccountModal = ({ isOpen, onClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button className="close-button" onClick={onClose}>×</button>
+        <button className="close-button" onClick={onClose}>
+          ×
+        </button>
         <h2>Create Account</h2>
         {/* Add your form fields here */}
         <form>

@@ -1,5 +1,6 @@
 import "./NavBar.css";
 import logo from "../../../public/favicon.svg";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="navbar-links">
@@ -7,19 +8,26 @@ const Navbar = () => {
 
       <div className="search-box">
         <input type="text" placeholder="Search Books..." />
-        <i className="material-symbols-outlined">search</i>
+        <i className="material-symbols-outlined"></i>
       </div>
 
       <ul>
-        <li>Home</li>
-        <li>Browse Books</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/browse">Browse Books</Link>
+        </li>
         <li>My Library</li>
         <li>Trade Requests</li>
         <li>Community</li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
 
       <div className="person-acc">
-        <i className="material-symbols-rounded">person</i>
+        <i className="material-symbols-rounded"></i>
       </div>
     </div>
   );

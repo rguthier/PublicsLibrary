@@ -1,0 +1,89 @@
+.add-new-trade-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background-color: #f2f9f3;
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    z-index: 1000;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-new-trade-panel .close-panel {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #2e5339;
+    align-self: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .add-new-trade-panel h2 {
+    color: #2e5339;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .add-new-trade-panel form label {
+    display: block;
+    font-size: 1rem;
+    color: #2e5339;
+    margin-bottom: 10px;
+  }
+  
+  .add-new-trade-panel form input,
+  .add-new-trade-panel form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .add-new-trade-panel form textarea {
+    height: 80px;
+    resize: none;
+  }
+  
+  .add-new-trade-panel .form-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .add-new-trade-panel .green-button {
+    background-color: #2e5339;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .add-new-trade-panel .green-button:hover {
+    background-color: #3a6650;
+    transform: scale(1.05);
+  }
+  
+  .add-new-trade-panel .cancel-button {
+    background-color: #ccc;
+    color: #2e5339;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .add-new-trade-panel .cancel-button:hover {
+    background-color: #bbb;
+  }
+  

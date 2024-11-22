@@ -1,0 +1,97 @@
+/* Edit Profile Panel */
+.edit-profile-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background-color: #f2f9f3;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.edit-profile-panel .close-panel {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #2e5339;
+  float: right;
+  margin-bottom: 20px;
+}
+
+.edit-profile-panel .profile-photo-edit {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.edit-profile-panel .profile-photo-edit img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.edit-profile-panel .profile-photo-edit .change-photo-link {
+  font-size: 0.9rem;
+  color: #2e5339;
+  text-decoration: none;
+}
+
+.edit-profile-panel .profile-photo-edit .change-photo-link:hover {
+  text-decoration: underline;
+}
+
+.edit-profile-panel form label {
+  display: block;
+  font-size: 1rem;
+  color: #2e5339;
+  margin-bottom: 10px;
+}
+
+.edit-profile-panel form input,
+.edit-profile-panel form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #2e5339;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.edit-profile-panel form textarea {
+  height: 80px;
+  resize: none;
+}
+
+.edit-profile-panel .form-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.edit-profile-panel .save-button,
+.edit-profile-panel .cancel-button {
+  background-color: #2e5339;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.edit-profile-panel .cancel-button {
+  background-color: #bbb;
+}
+
+.edit-profile-panel .save-button:hover {
+  background-color: #3a6650;
+}
+
+.edit-profile-panel .cancel-button:hover {
+  background-color: #aaa;
+}

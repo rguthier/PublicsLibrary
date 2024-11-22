@@ -1,0 +1,42 @@
+/* Book Shelf */
+.book-shelf {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f4f1ea;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-shelf h2 {
+    font-size: 1.5rem;
+    color: #2e5339;
+    margin-bottom: 20px;
+  }
+  
+  .shelves {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .shelf {
+    display: flex;
+    gap: 15px;
+    background-color: #d9e6d2;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .book {
+    width: 80px;
+    height: 120px;
+    background-color: #c3d6b6;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2e5339;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  

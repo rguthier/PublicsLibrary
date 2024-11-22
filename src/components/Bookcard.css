@@ -1,30 +1,42 @@
 .book-card {
-  flex: 0 0 auto; /* Prevents the BookCard from shrinking in the horizontal scroll */
-  background-color: #ffffff;
+  flex: 0 0 auto; /* Prevent shrinking in horizontal scroll */
+  background-color: #f4f1ea;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 180px; /* Set width to control the card size */
+  width: 200px; /* Slightly increased width for better readability */
   padding: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  justify-content: space-between; /* Space between image, text, and button */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   scroll-snap-align: center; /* Centers the card in the viewport when scrolling */
 }
 
 .book-card:hover {
-  transform: translateY(-5px); /* Elevate on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px); /* Enhanced elevation on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Placeholder for the Image */
 .book-image {
   width: 100%;
-  height: 180px; /* Adjust height for consistent image sizing */
-  object-fit: cover;
+  height: 150px; /* Fixed height for consistency */
+  background-color: #c3d6b6; /* Light green background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 8px;
   margin-bottom: 1rem;
+  color: #2e5339; /* Dark green text for contrast */
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase; /* Makes "Image" text uppercase */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Adds an inner shadow for depth */
 }
 
+
+/* Book Details */
 .book-details {
   display: flex;
   flex-direction: column;
@@ -32,25 +44,28 @@
 }
 
 .book-title {
-  font-size: 1.125rem;
+  font-size: 1.2rem; /* Slightly larger for prominence */
   color: #2e5339;
   margin-bottom: 0.5rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .book-author {
   font-size: 0.9rem;
   color: #606060;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .book-description {
   font-size: 0.85rem;
   color: #808080;
   margin-bottom: 1rem;
-  line-height: 1.4;
+  line-height: 1.5; /* Improved readability */
+  text-align: center;
 }
 
+/* Trade Button */
 .trade-button {
   background-color: #d9e6d2;
   color: #2e5339;
@@ -59,9 +74,10 @@
   padding: 10px 20px;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .trade-button:hover {
-  background-color: #c3d6b6;
+  background-color: #c3d6b6; /* Slightly darker green on hover */
+  transform: scale(1.05); /* Subtle zoom effect */
 }

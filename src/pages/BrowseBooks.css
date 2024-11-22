@@ -1,0 +1,32 @@
+.browse-books {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .browse-books h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #f4f1ea; /* Paper-like white */
+  }
+  
+  .book-list {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    padding: 10px;
+    scroll-behavior: smooth; /* Smooth scrolling for better UX */
+  }
+  
+  .book-list::-webkit-scrollbar {
+    height: 8px; /* Height of the scrollbar */
+    background-color: #d9e6d2; /* Light sage green scrollbar track */
+  }
+  
+  .book-list::-webkit-scrollbar-thumb {
+    background-color: #2e5339; /* Dark green scrollbar thumb */
+    border-radius: 4px; /* Rounded edges for the scrollbar thumb */
+  }
+  

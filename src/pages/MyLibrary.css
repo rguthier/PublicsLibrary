@@ -1,0 +1,348 @@
+/* General Layout */
+.library-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f4f1ea; /* Light background */
+  color: #2e5339; /* Text color */
+  padding: 20px;
+  gap: 20px; /* Space between sections */
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  /* Adjust for navbar */
+  margin-top: 25%; /* Offset for fixed navbar */
+}
+
+
+  
+  /* Profile Section */
+  .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    margin-bottom: 20px; /* Increased margin to ensure space for profile content */
+  }
+  
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #c3d6b6; /* Light green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2e5339;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 15px; /* Reduced margin for better spacing */
+  }
+  
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .profile-info h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .profile-info p {
+    font-size: 1rem;
+    color: #606060;
+  }
+  
+  .profile-info .edit-button {
+    background-color: #2e5339; /* Dark green */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profile-info .edit-button:hover {
+    background-color: #3a6650;
+  }
+  
+  /* Tab Navigation */
+  .tab-navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .tab-navigation li {
+    list-style: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #2e5339;
+    transition: all 0.3s;
+  }
+  
+  .tab-navigation li:hover {
+    color: #3a6650;
+  }
+  
+  .tab-navigation .active-tab {
+    font-weight: bold;
+    color: #2e5339;
+    border-bottom: 3px solid #2e5339;
+  }
+  
+  /* Main Content */
+  .main-content {
+    display: grid;
+    gap: 20px;
+  }
+  
+  /* Stats Section */
+  .stats-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .stat-card {
+    background-color: #c3d6b6;
+    color: #2e5339;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stat-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .stat-card p {
+    font-size: 1rem;
+  }
+  
+  /* Book Library Section */
+  .book-library {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduced gap for better alignment */
+  }
+  
+  .book-library h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .shelves {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: hidden;
+  }
+  
+  .shelf {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px;
+    background-color: #d9e6d2; /* Light green */
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shelf::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .shelf::-webkit-scrollbar-thumb {
+    background-color: #3a6650;
+    border-radius: 5px;
+  }
+  
+  .book {
+    flex: 0 0 auto; /* Prevent shrinking in horizontal scroll */
+    width: 60px;
+    height: 100px;
+    background-color: #c3d6d2; /* Light green book color */
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2e5339;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  /* Trade Posts Section */
+  .trade-posts {
+    display: flex;
+    /* flex-direction: column; */
+    gap: 10px;
+  }
+  
+  .trade-posts h2 {
+    font-size: 1.5rem;
+  }
+  
+  .trade-form input,
+  .trade-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .trade-form button {
+    background-color: #2e5339; /* Dark green */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .trade-form button:hover {
+    background-color: #3a6650;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .library-layout {
+      padding: 10px;
+    }
+  
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .shelf {
+      gap: 5px;
+    }
+  
+    .book {
+      width: 50px;
+      height: 80px;
+    }
+  }
+  
+
+  trade-books {
+    display: flex;
+    flex-wrap: wrap; /* Enable wrapping of book cards */
+    gap: 20px; /* Space between book cards */
+    justify-content: flex-start; /* Align books to the left */
+  }
+  
+  .book-card {
+    width: 200px; /* Adjust width of each book card */
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .add-trade-button {
+    background-color: #2e5339; /* Sage green background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .add-trade-button:hover {
+    background-color: #3a6650; /* Darker green on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+
+
+
+  /* Overlay (to dim background when the panel opens) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* Edit Profile Panel */
+  .edit-profile-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .edit-profile-panel h2 {
+    font-size: 1.5rem;
+    color: #2e5339;
+  }
+  
+  .edit-profile-panel input,
+  .edit-profile-panel textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .edit-profile-panel button {
+    background-color: #2e5339;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-profile-panel button:hover {
+    background-color: #3a6650;
+  }
+  
+  .close-panel {
+    background-color: #ff4f4f;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .close-panel:hover {
+    background-color: #e03d3d;
+  }
+  

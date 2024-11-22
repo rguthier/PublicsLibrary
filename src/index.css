@@ -12,7 +12,7 @@ body{
   align-items: center; 
   justify-content: center; 
   min-height: 100vh; /*puts in middle of page */
-  background: #2e5339; /* entire background color */
+  background: #2e5339 !important; /* entire background color */
 }
 
 
@@ -201,3 +201,39 @@ body::before {
   position: relative;
   z-index: 1; /* Ensure it appears above the blurred background */
 }
+
+.navbar-links {
+  position: fixed; /* Keeps the navbar fixed at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures it stays above the content */
+  background-color: #f4f1ea; /* Background color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  padding: 15px 2.75%; /* Navbar padding */
+}
+
+.nav-container {
+  padding-top: 100px; /* Adjust this to match the navbar's height */
+}
+
+.main-content {
+  padding: 1rem; /* Add padding for spacing inside content */
+}
+
+/* Navbar Adjustments */
+.content-container {
+  margin-top: 100px; /* Adjust this to match the height of your navbar */
+  padding: 0 20px; /* Optional: Adds side padding */
+}
+
+/* Global Section Styles */
+.section {
+  background-color: #f4f1ea;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+

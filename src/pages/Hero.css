@@ -21,13 +21,56 @@
   width: 100%;
   height: 100%;
   background-color: #2f533a;
-  filter: blur(8px);
+  /* filter: blur(8px); */
   z-index: -1;
 }
 
-.hero-content {
+/* .hero-content {
   position: relative;
   z-index: 1;
-}
+} */
 
 /* Other text and button styles remain unchanged */
+
+
+hero-content {
+  position: relative;
+  z-index: 1;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: #d9e6d2;
+}
+
+.cta-button {
+  background-color: #a8c3a0 !important; /* Ensure the lighter green is applied */
+  color: #2e5339 !important; /* Dark green text for contrast */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  background-color: #91ad89 !important; /* Slightly darker green for hover */
+  transform: scale(1.05);
+}
+
+.cta-button:active {
+  background-color: #a8c3a0 !important; /* Revert to lighter green on click */
+  transform: scale(0.95);
+}

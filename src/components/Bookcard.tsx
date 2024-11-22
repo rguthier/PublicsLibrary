@@ -13,6 +13,10 @@ const BookCard = ({
   return (
     <div className="book-card">
       {/* <img src={image} alt={`${title} cover`} className="book-image" /> */}
+      {/* Placeholder for the image */}
+      <div className="book-image">
+        <span>Image</span>
+      </div>
       <div className="book-details">
         <h3 className="book-title">{title}</h3>
         <p className="book-author">by {author}</p>

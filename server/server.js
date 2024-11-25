@@ -2,22 +2,20 @@ const mysql = require("mysql2");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-app.use(express.json()); 
+app.use(express.json());
 
 app.use(cors());
- 
 
 const database = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "mochareli24:)",
+  password: "root",
   database: "publics_library",
 });
 database.connect((err) => {
   if (err) throw err;
   console.log("Database connected");
 });
-
 
 //endpoints
 app.get("/", (req, res) => {
@@ -39,7 +37,7 @@ app.get("/books", (req, res) => {
 });
 
 app.get("/users", (req, res) => {
-  database.query("SELECT user_id, username, email FROM user", (err, result) => {
+  database.query("SELECT user_id, username FROM user", (err, result) => {
     if (err) {
       console.log("error in query");
       res.status(404).send("error");
@@ -48,7 +46,6 @@ app.get("/users", (req, res) => {
     res.json(result);
   });
 });
-
 
 app.post("/addbook", (req, res) => {
   console.log(req.body); // Debug the request body
@@ -74,7 +71,7 @@ app.post("/addbook", (req, res) => {
 
 app.delete("/books/:id", (req, res) => {
   const bookId = req.params.id;
-  const query = "DELETE FROM book WHERE book_id = ?";  // Use book_id here
+  const query = "DELETE FROM book WHERE book_id = ?"; // Use book_id here
 
   database.query(query, [bookId], (err, data) => {
     if (err) {
@@ -90,14 +87,9 @@ app.put("/books/:id", (req, res) => {
   const bookId = req.params.id;
   const query = "Update book SET `title` = ?, `author` = ?, `owner_id`= ?";
 
-  const values=[
-    req.body.title,
-    req.body.author,
-    req.body.owner_id,
+  const values = [req.body.title, req.body.author, req.body.owner_id];
 
-  ]
-
-  database.query(query, [... values, bookId], (err, data) => {
+  database.query(query, [...values, bookId], (err, data) => {
     if (err) {
       console.log(err);
       res.status(400).send("Error deleting book");
@@ -107,5 +99,25 @@ app.put("/books/:id", (req, res) => {
   });
 });
 
+app.post("/login", (req, res) => {
+  database.query(
+    "SELECT token FROM user WHERE username='" +
+      req.body.username +
+      "' AND password = '" +
+      req.body.password +
+      "'",
+    (err, result) => {
+      if (err) {
+        console.log("error in query");
+        res.status(404).send("error");
+        return;
+      }
+      if (result.length == 0) {
+        res.send("error");
+      }
+      res.json(result[0]);
+    }
+  );
+});
 
 app.listen(8800);

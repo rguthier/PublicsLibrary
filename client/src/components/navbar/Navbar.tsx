@@ -2,8 +2,12 @@ import "./NavBar.css";
 import logo from "../../../public/favicon.svg";
 import { Link } from "react-router-dom";
 
-
 const Navbar = () => {
+  const removeToken = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+
   return (
     <div className="navbar-links">
       <img src={logo} alt="" className="logo" />
@@ -21,9 +25,7 @@ const Navbar = () => {
         <li>My Library</li>
         <li>Trade Requests</li>
         <li>Community</li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
+        <li onClick={removeToken}>Logout</li>
       </ul>
 
       <div className="person-acc">

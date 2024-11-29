@@ -1,0 +1,39 @@
+.book-list {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; /* Center the cards */
+  gap: 10px; /* Space between cards */
+  padding: 20px; /* Add padding around the container */
+}
+
+.book-card {
+  width: 150px; 
+  margin: 5px; 
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  overflow: hidden; 
+  text-align: center;
+}
+
+.book-card img {
+  width: 100%; 
+  height: auto;
+  border-bottom: 1px solid #ddd; 
+}
+
+.book-card h3 {
+  font-size: 16px;
+  margin: 10px 0; 
+}
+
+.book-card p {
+  font-size: 14px; 
+  margin: 5px 0; 
+}
+
+.browse-books {
+  max-width: 1200px; 
+  margin: 0 auto;
+}
+

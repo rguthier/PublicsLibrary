@@ -1,0 +1,45 @@
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;  /* Align items to the left */
+    gap: 10px;
+    padding-left: 50px;  /* Adjust this value to add space from the left */
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  
+  
+  .book-card {
+    width: 150px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .book-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .book-card h3 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .book-card p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .browse-books {
+    width: 100%;
+    margin-left: auto;  /* Pushes the container and its content to the right */
+    padding-left: 20px; /* Optional: Adds padding to the left */
+  }
+  
+  

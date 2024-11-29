@@ -1,0 +1,52 @@
+
+.navbar-links {
+  width: 100%;  /* Ensure it spans the full width */
+  position: fixed;  /* Make the navbar fixed at the top */
+  top: 0;  /* Align it at the top of the page */
+  left: 0;  /* Align it to the left */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f4f1ea;
+  padding: 15px 2.75%;
+  z-index: 1000;  
+}
+
+
+/*  */
+.logo {
+  max-width: 150px;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  margin-right: 25px;
+}
+
+ul {
+  flex: 1;
+  list-style: none;
+  text-align: center;
+}
+
+ul li {
+  display: inline-block;
+  margin: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.person-acc {
+  width: 50px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.browse-books {
+  padding-top: 80px;  
+}
+

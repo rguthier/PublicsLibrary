@@ -1,0 +1,13 @@
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    padding-bottom: 200px; /* Add padding to the bottom of the container */
+  }
+  
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  

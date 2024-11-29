@@ -1,0 +1,82 @@
+
+  .book-image {
+    width: 100%;
+    height: 180px; /* Adjust height for consistent image sizing */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .book-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .book-title {
+    font-size: 1.125rem;
+    color: #2e5339;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .book-author {
+    font-size: 0.9rem;
+    color: #606060;
+    margin-bottom: 1rem;
+  }
+  
+  .book-description {
+    font-size: 0.85rem;
+    color: #808080;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  .trade-button {
+    background-color: #d9e6d2;
+    color: #2e5339;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .trade-button:hover {
+    background-color: #c3d6b6;
+  }
+  
+  .results-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to the next line if needed */
+    gap: 20px; /* Adds space between items */
+    justify-content: center; /* Centers the items horizontally */
+    margin-top: 20px; /* Adds space above the grid */
+  }
+  
+  .book-found {
+    flex: 1 0 200px; /* Flex-grow (1), Flex-shrink (0), and basis (200px) for responsive width */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex: 0 0 auto; Prevents the BookCard from shrinking in the horizontal scroll
+      
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 180px; 
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .book-found:hover {
+    transform: translateY(-5px); /* Elevate on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  

@@ -1,0 +1,54 @@
+/* src/components/BookList.css */
+
+.book-list-container {
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f1ea;
+  }
+  
+  .book-list-container h2 {
+    font-size: 2rem;
+    color: #2e5339;
+    margin-bottom: 1.5rem;
+  }
+  
+  .book-list {
+    display: flex;            /* Use flexbox to arrange items in a row */
+    gap: 20px;                /* Space between cards */
+    overflow-x: auto;         /* Enable horizontal scrolling */
+    padding: 10px 0;          /* Optional padding */
+    scroll-snap-type: x mandatory;  /* Optional smooth snapping */
+    flex-wrap: nowrap;        /* Prevent wrapping to the next line */
+  }
+  
+  .book-list::-webkit-scrollbar {
+    height: 8px;              /* Optional: Customize scrollbar height */
+  }
+  
+  .book-list::-webkit-scrollbar-thumb {
+    background-color: #c3d6b6;
+    border-radius: 10px;
+  }
+  
+  .book-list::-webkit-scrollbar-track {
+    background: #f4f1ea;
+  }
+  
+  /* Card styling */
+  .card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    width: 180px;             /* Set the card width to make them fit horizontally */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  

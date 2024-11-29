@@ -1,0 +1,41 @@
+.book-list {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 20px;  
+  padding: 20px;
+}
+
+.book-card {
+  /* For 4 items per row on larger screens */
+  width: calc(25% - 20px); /* 4 items in a row, minus the gap */
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* For 5 items per row on medium screens */
+@media (max-width: 1200px) {
+  .book-card {
+    width: calc(20% - 20px); /* 5 items in a row */
+  }
+}
+
+/* For smaller screens, like mobile */
+@media (max-width: 768px) {
+  .book-card {
+    width: calc(50% - 20px); /* 2 items per row on smaller screens */
+  }
+}
+
+/* Container settings */
+.browse-books {
+  width: 100%;  /* Full width */
+  max-width: 100%;  /* Allow the container to stretch to full width */
+  margin: 0 auto;  /* Center the container horizontally */
+  padding-left: 20px;
+  padding-right: 20px;
+}

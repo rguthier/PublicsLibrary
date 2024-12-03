@@ -1,8 +1,7 @@
 // src/components/CreateAccountModal.jsx
 import "./CreateAccountModal.css"; // Add styles for modal
-
-const CreateAccountModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null; // Don't render if not open
+interface CreateAccountModalProps { isOpen: boolean; onClose: () => void; }
+const CreateAccountModal: React.FC<CreateAccountModalProps> = ({ isOpen, onClose }) => { if (!isOpen) return null; // Don't render if not open
 
   return (
     <div className="modal-overlay">

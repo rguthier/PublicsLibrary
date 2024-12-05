@@ -11,6 +11,7 @@ const database = mysql.createConnection({
   user: "root",
   password: "root",
   database: "publics_library",
+  multipleStatements: true,
 });
 database.connect((err) => {
   if (err) throw err;
@@ -100,12 +101,12 @@ app.put("/books/:id", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
+  username = req.body.username;
+  password = req.body.password;
+
   database.query(
-    "SELECT token FROM user WHERE username='" +
-      req.body.username +
-      "' AND password = '" +
-      req.body.password +
-      "'",
+    "SELECT token FROM user WHERE username=? AND password = ?",
+    [username, password],
     (err, result) => {
       if (err) {
         console.log("error in query");
@@ -116,6 +117,43 @@ app.post("/login", (req, res) => {
         res.send("error");
       }
       res.json(result[0]);
+    }
+  );
+});
+
+app.post("/register", async (req, res) => {
+  const username = req.body.username;
+
+  database.query(
+    "SELECT username FROM user WHERE username = ?",
+    [username],
+    (err, result) => {
+      if (err) {
+        console.log("error in query");
+        res.json({ error: "query" });
+        return;
+      } else if (result.length > 0) {
+        res.json({ error: "username" });
+      } else {
+        database.query(
+          "INSERT INTO user (username, password, zip_code, favorite_genres) VALUES (?, ?, ?, ?); SELECT token FROM user WHERE username = ?",
+          [
+            username,
+            req.body.password,
+            req.body.zip_code,
+            req.body.favorite_genres,
+            username,
+          ],
+          (err, result) => {
+            if (err) {
+              console.log("error in query");
+              res.json({ error: "query" });
+              return;
+            }
+            res.json(result[1][0]);
+          }
+        );
+      }
     }
   );
 });

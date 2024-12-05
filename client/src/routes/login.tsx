@@ -33,7 +33,6 @@ export default function Login({ setToken }: { setToken: Function }) {
     const credentials = { username: username, password: password };
     const token = await loginUser(credentials);
     if (token == "error") {
-      console.log("here");
       setError(true);
     } else {
       setToken(token);
@@ -58,21 +57,11 @@ export default function Login({ setToken }: { setToken: Function }) {
         <span>or</span>
       </p> */}
 
-      {error ? (
-        <div className="error-message">
-          <p>
-            There was an error with your login. If you have an account, try
-            again. If you do not have an account, make one{" "}
-            <a href="/register">here</a>
-          </p>
-        </div>
-      ) : null}
-
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <input
             type="text"
-            placeholder="Email address"
+            placeholder="Username"
             className="input-field"
             required
             onChange={(e) => setUsername(e.target.value)}
@@ -92,11 +81,20 @@ export default function Login({ setToken }: { setToken: Function }) {
         <a href="#" className="forgot-pass-link">
           Forgot Password?
         </a>
+        {error ? (
+          <div className="error-message">
+            <p>
+              There was an error with your login. If you have an account, try
+              again. If you do not have an account,{" "}
+              <a href="/register">make one here</a>
+            </p>
+          </div>
+        ) : null}
         <button className="login-button">Log in</button>
       </form>
 
       <p className="signup-text">
-        Don't have an account? <a href="#">SignUp now</a>
+        Don't have an account? <a href="/register">Sign up now</a>
       </p>
     </div>
   );

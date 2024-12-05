@@ -1,5 +1,11 @@
 import * as ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 import "./index.css";
 import Root from "./routes/root";
 import ErrorPage from "./error";
@@ -9,6 +15,7 @@ import Add from "./sql/sqlpages/Add.jsx";
 import Update from "./sql/sqlpages/Update.jsx";
 import Dashboard from "./routes/dashboard.tsx";
 import { useState } from "react";
+import Register from "./routes/register.tsx";
 
 function useToken() {
   const getToken = () => {
@@ -32,20 +39,30 @@ function useToken() {
 
 export default function App() {
   const { token, setToken } = useToken();
+  console.log("token: " + token);
 
-  if (!token) {
-    return <Login setToken={setToken} />;
-  }
+  const LoggedInRoutes = () => {
+    return token != undefined ? <Outlet /> : <Login setToken={setToken} />;
+  };
+
+  const LoggedOutRoutes = () => {
+    return !token ? <Outlet /> : <Navigate to="/" />;
+  };
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Root />} />
-        <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/bookpage" element={<BookPage />} />
-        <Route path="/add" element={<Add />} />
-        <Route path="/update/:id" element={<Update />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<LoggedInRoutes />}>
+          <Route path="/" element={<Root />} />
+          <Route path="/browse" element={<BookPage />} />
+          <Route path="/add" element={<Add />} />
+          <Route path="/update/:id" element={<Update />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+        <Route element={<LoggedOutRoutes />}>
+          <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route path="/register" element={<Register setToken={setToken} />} />
+        </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

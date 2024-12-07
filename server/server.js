@@ -105,7 +105,7 @@ app.post("/login", (req, res) => {
   password = req.body.password;
 
   database.query(
-    "SELECT token FROM user WHERE username=? AND password = ?",
+    "SELECT username, token FROM user WHERE username=?  AND password = ?",
     [username, password],
     (err, result) => {
       if (err) {
@@ -121,7 +121,7 @@ app.post("/login", (req, res) => {
   );
 });
 
-app.post("/register", async (req, res) => {
+app.post("/register", (req, res) => {
   const username = req.body.username;
 
   database.query(
@@ -154,6 +154,35 @@ app.post("/register", async (req, res) => {
           }
         );
       }
+    }
+  );
+});
+
+app.post("/userdata", (req, res) => {
+  const finalResult = {};
+  database.query(
+    "SELECT user_id, username, zip_code, favorite_genres FROM user WHERE username = ? AND token = ?",
+    [req.body.username, req.body.token],
+    (err, result) => {
+      if (err) {
+        console.log("error in query");
+        res.json({ error: "query" });
+        return;
+      }
+      finalResult.userData = result[0];
+      database.query(
+        "SELECT * FROM book WHERE owner_id = ?",
+        [finalResult.userData.user_id],
+        (err, result) => {
+          if (err) {
+            console.log("error in query");
+            res.json({ error: "query" });
+            return;
+          }
+          finalResult.books = result;
+          res.json(finalResult);
+        }
+      );
     }
   );
 });

@@ -1,7 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default function Login({ setToken }: { setToken: Function }) {
+export default function Login({
+  setToken,
+  setUser,
+}: {
+  setToken: Function;
+  setUser: Function;
+}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -31,11 +37,14 @@ export default function Login({ setToken }: { setToken: Function }) {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const credentials = { username: username, password: password };
-    const token = await loginUser(credentials);
-    if (token == "error") {
+    const result = await loginUser(credentials);
+    const token = { token: result.token };
+    const user = { user: result.username };
+    if (result == "error") {
       setError(true);
     } else {
       setToken(token);
+      setUser(user);
       setError(false);
     }
   };

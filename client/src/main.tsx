@@ -37,12 +37,36 @@ function useToken() {
   };
 }
 
+function useUser() {
+  const getUser = () => {
+    const userString = localStorage.getItem("user");
+    const userUser = JSON.parse(userString);
+    return userUser?.user;
+  };
+
+  const [user, setUser] = useState(getUser());
+
+  const saveUser = (userUser: { user: string }) => {
+    localStorage.setItem("user", JSON.stringify(userUser));
+    setUser(userUser.user);
+  };
+
+  return {
+    user,
+    setUser: saveUser,
+  };
+}
+
 export default function App() {
   const { token, setToken } = useToken();
-  console.log("token: " + token);
+  const { user, setUser } = useUser();
 
   const LoggedInRoutes = () => {
-    return token != undefined ? <Outlet /> : <Login setToken={setToken} />;
+    return token != undefined ? (
+      <Outlet />
+    ) : (
+      <Login setToken={setToken} setUser={setUser} />
+    );
   };
 
   const LoggedOutRoutes = () => {
@@ -53,14 +77,17 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<LoggedInRoutes />}>
-          <Route path="/" element={<Root />} />
+          <Route path="/" element={<Root user={user} />} />
           <Route path="/browse" element={<BookPage />} />
           <Route path="/add" element={<Add />} />
           <Route path="/update/:id" element={<Update />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
         <Route element={<LoggedOutRoutes />}>
-          <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route
+            path="/login"
+            element={<Login setToken={setToken} setUser={setUser} />}
+          />
           <Route path="/register" element={<Register setToken={setToken} />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />

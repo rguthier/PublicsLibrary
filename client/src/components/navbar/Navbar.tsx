@@ -25,7 +25,12 @@ const Navbar = () => {
         <li>My Library</li>
         <li>Trade Requests</li>
         <li>Community</li>
-        <li onClick={removeToken}>Logout</li>
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+        <li style={{ color: "red" }} onClick={removeToken}>
+          Logout
+        </li>
       </ul>
 
       <div className="person-acc">

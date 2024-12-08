@@ -49,8 +49,6 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/addbook", (req, res) => {
-  console.log(req.body); // Debug the request body
-
   const { title, author, owner_id } = req.body; // Extract values from the request body
 
   // Ensure that the required fields are present

@@ -35,26 +35,25 @@ const BookPage = () => {
       <h1> Public's Library</h1>
       <div className="book-container">
         {book.map((bookItem) => (
-          <BookCard
-            title={bookItem.title}
-            author={bookItem.author}
-            description="Description goes here"
-          />
-          // <div className="book" key={bookItem.book_id}>
-          //   <h2>{bookItem.title}</h2>
-          //   <h2>{bookItem.author}</h2>
-          //   <h2>{bookItem.owner_id}</h2>
-          //   <button
-          //     className="delete"
-          //     onClick={() => handleDelete(bookItem.book_id)}
-          //   >
-          //     {" "}
-          //     Delete{" "}
-          //   </button>
-          //   <button className="update">
-          //     <Link to={`/update/${bookItem.book_id}`}> Update </Link>
-          //   </button>
-          // </div>
+          <div>
+            <BookCard
+              title={bookItem.title}
+              author={bookItem.author}
+              description="Description goes here"
+            />
+            <div className="book" key={bookItem.book_id}>
+              <button
+                className="delete"
+                onClick={() => handleDelete(bookItem.book_id)}
+              >
+                {" "}
+                Delete{" "}
+              </button>
+              <button className="update">
+                <Link to={`/update/${bookItem.book_id}`}> Update </Link>
+              </button>
+            </div>
+          </div>
         ))}
       </div>
       <button>

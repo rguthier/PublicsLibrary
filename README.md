@@ -8,7 +8,7 @@ To run the project locally:
 
 Set up the database using the script below.
 
-In the client folder, run ```npm run dev``. The site will run at http://localhost:5173.
+In the client folder, run ```npm run dev```. The site will run at http://localhost:5173.
 
 In the server folder, run ```node server.js```. This will set up the express server that works with the database.
 

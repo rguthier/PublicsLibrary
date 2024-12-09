@@ -15,6 +15,8 @@ const BookCard = ({
   isMine: boolean;
   id: number;
 }) => {
+  console.log(id);
+
   const getUser = () => {
     const userString = localStorage.getItem("user");
     const userUser = JSON.parse(userString);
@@ -31,8 +33,10 @@ const BookCard = ({
 
   const handleTradeRequest = async () => {
     try {
-      await axios.post("http://localhost:8800/traderequest"),
-        { username: getUser(), book_id: id };
+      await axios.post("http://localhost:8800/traderequest", {
+        book_id: id,
+        username: getUser(),
+      });
     } catch (err) {
       console.log(err);
     }

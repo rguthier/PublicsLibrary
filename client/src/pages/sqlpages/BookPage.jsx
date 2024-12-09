@@ -38,8 +38,9 @@ const BookPage = () => {
             <BookCard
               title={bookItem.title}
               author={bookItem.author}
-              description="Description goes here"
+              description={"Owned by " + bookItem.username}
               isMine={false}
+              id={bookItem.book_id}
             />
           </div>
         ))}

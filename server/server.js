@@ -305,6 +305,7 @@ app.post("/completedtrades", (req, res) => {
 app.post("/traderequest", (req, res) => {
   let giver = null;
   let receiver = null;
+  console.log(req.body.book_id);
   database.query(
     "SELECT owner_id FROM book WHERE book_id = ?",
     [req.body.book_id],

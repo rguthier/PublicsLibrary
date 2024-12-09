@@ -15,9 +15,24 @@ const BookCard = ({
   isMine: boolean;
   id: number;
 }) => {
+  const getUser = () => {
+    const userString = localStorage.getItem("user");
+    const userUser = JSON.parse(userString);
+    return userUser?.user;
+  };
+
   const handleDelete = async (id: number) => {
     try {
       await axios.delete(`http://localhost:8800/books/${id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleTradeRequest = async () => {
+    try {
+      await axios.post("http://localhost:8800/traderequest"),
+        { username: getUser(), book_id: id };
     } catch (err) {
       console.log(err);
     }
@@ -29,7 +44,11 @@ const BookCard = ({
         <h3 className="book-title">{title}</h3>
         <p className="book-author">by {author}</p>
         <p className="book-description">{description}</p>
-        {!isMine && <button className="trade-button">Request Trade</button>}
+        {!isMine && (
+          <button className="trade-button" onClick={() => handleTradeRequest()}>
+            Request Trade
+          </button>
+        )}
         {isMine && (
           <div>
             <button className="delete-button" onClick={() => handleDelete(id)}>

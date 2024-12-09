@@ -198,4 +198,98 @@ app.post("/userdata", (req, res) => {
   );
 });
 
+app.post("/yourequested", (req, res) => {
+  user_id = null;
+  database.query(
+    "SELECT user_id FROM user WHERE username = ?",
+    [req.body.username],
+    (err, result) => {
+      if (err) {
+        console.log("error in query");
+        return;
+      }
+      user_id = result[0].user_id;
+      database.query(
+        "SELECT * FROM trade WHERE receiver_id = ?",
+        [user_id],
+        (err, result) => {
+          if (err) {
+            console.log("error in query");
+            return;
+          }
+          res.json(result);
+        }
+      );
+    }
+  );
+});
+
+app.post("/youreceived", (req, res) => {
+  user_id = null;
+  database.query(
+    "SELECT user_id FROM user WHERE username = ?",
+    [req.body.username],
+    (err, result) => {
+      if (err) {
+        console.log("error in query");
+        return;
+      }
+      user_id = result[0].user_id;
+      database.query(
+        "SELECT * FROM trade WHERE giver_id = ?",
+        [user_id],
+        (err, result) => {
+          if (err) {
+            console.log("error in query");
+            return;
+          }
+          res.json(result);
+        }
+      );
+    }
+  );
+});
+
+app.post("/traderequest", (req, res) => {
+  let giver = null;
+  let receiver = null;
+  database.query(
+    "SELECT owner_id FROM book WHERE book_id = ?",
+    [req.body.book_id],
+    (err, result) => {
+      if (err) {
+        console.log("error in query: " + err);
+        return;
+      }
+      giver = result[0].owner_id;
+      database.query(
+        "SELECT user_id FROM user WHERE username = ?",
+        [req.body.username],
+        (err, result) => {
+          if (err) {
+            console.log("error in query: " + err);
+            return;
+          }
+          receiver = result[0].user_id;
+          database.query(
+            "INSERT INTO trade (trade_status, book_id, giver_id, receiver_id) VALUES (?, ?, ?, ?)",
+            ["requested", req.body.book_id, giver, receiver],
+            (err, result) => {
+              if (err) {
+                console.log("error in query: " + err);
+                return;
+              }
+              res.json("success");
+            }
+          );
+        }
+      );
+    }
+  );
+});
+
+// book_id int,
+//     giver_id int,
+//     receiver_id int,
+
 app.listen(8800);

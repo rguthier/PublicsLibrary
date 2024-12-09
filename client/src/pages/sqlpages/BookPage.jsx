@@ -30,8 +30,8 @@ const BookPage = () => {
   };
 
   return (
-    <div>
-      <h1> Public's Library</h1>
+    <div style={{ backgroundColor: "#2e5339", height: "90vh" }}>
+      <h1 style={{ color: "white" }}> Available Books </h1>
       <div className="book-container">
         {book.map((bookItem) => (
           <div>
@@ -41,18 +41,6 @@ const BookPage = () => {
               description="Description goes here"
               isMine={false}
             />
-            <div className="book" key={bookItem.book_id}>
-              <button
-                className="delete"
-                onClick={() => handleDelete(bookItem.book_id)}
-              >
-                {" "}
-                Delete{" "}
-              </button>
-              <button className="update">
-                <Link to={`/update/${bookItem.book_id}`}> Update </Link>
-              </button>
-            </div>
           </div>
         ))}
       </div>

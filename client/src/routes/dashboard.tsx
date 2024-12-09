@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import BookCard from "../components/Bookcard";
+import Add from "../pages/sqlpages/Add";
 
 export default function Dashboard() {
   const getUser = () => {
@@ -33,6 +34,7 @@ export default function Dashboard() {
           username: username,
           token: token,
         });
+        console.log(response.data);
         setUserData(response.data);
       } catch (err) {
         console.log(err);
@@ -40,28 +42,36 @@ export default function Dashboard() {
       }
     };
     fetchUserData();
-    console.log(userData);
   }, []);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div
+      className="nav-container"
+      style={{ backgroundColor: "#f9f7f4", padding: "10px" }}
+    >
+      <h1 style={{ textAlign: "center" }}>Dashboard</h1>
       <h2>User info</h2>
-      <ul>
-        <li>Username: {userData.userData.username}</li>
-        <li>User ID: {userData.userData.user_id}</li>
-        <li>Zipcode: {userData.userData.zip_code}</li>
-        <li>Favorite genres: {userData.userData.favorite_genres}</li>
-      </ul>
       <div>
+        <p>Username: {userData.userData.username}</p>
+        <p>User ID: {userData.userData.user_id}</p>
+        <p>Zipcode: {userData.userData.zip_code}</p>
+        <p>Favorite genres: {userData.userData.favorite_genres}</p>
+        <button className="trade-button">Edit</button>
+      </div>
+      <br />
+      <h2 style={{ padding: "5px" }}>My Books</h2>
+      <div className="my-books">
         {userData.books.map((bookItem) => (
           <BookCard
             title={bookItem.title}
             author={bookItem.author}
-            description="Description goes here"
+            isMine={true}
+            id={bookItem.book_id}
           />
         ))}
       </div>
+      <br />
+      <Add />
     </div>
   );
 }

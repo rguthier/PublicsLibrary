@@ -12,12 +12,13 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh; /*puts in middle of page */
-  background: #2e5339; /* entire background color */
+  background: #2e5339 !important; /* entire background color */
 }
 
 #root {
   width: 100%;
   padding: 0 0.6rem;
+  height: 100vh;
 }
 
 .login-container {
@@ -203,4 +204,10 @@ body::before {
 #root {
   position: relative;
   z-index: 1; /* Ensure it appears above the blurred background */
+}
+
+.my-books {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
 }

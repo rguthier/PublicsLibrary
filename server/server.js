@@ -49,23 +49,36 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/addbook", (req, res) => {
-  const { title, author, owner_id } = req.body; // Extract values from the request body
+  console.log(req.body);
+  const { title, author, username } = req.body; // Extract values from the request body
 
   // Ensure that the required fields are present
-  if (!title || !author || !owner_id) {
+  if (!title || !author || !username) {
     return res.status(400).send("Missing required fields");
   }
 
-  // Use parameterized query to prevent SQL injection
-  const query = "INSERT INTO book (title, author, owner_id) VALUES (?, ?, ?)";
-  database.query(query, [title, author, owner_id], (err) => {
-    if (err) {
-      console.log(err);
-      res.status(400).send("Error adding book");
-      return;
+  database.query(
+    "SELECT user_id FROM user WHERE username = ?",
+    [req.body.username],
+    (err, result) => {
+      if (err) {
+        console.log("error in query");
+        res.send("error");
+        return;
+      }
+      console.log(result[0]);
+      const query =
+        "INSERT INTO book (title, author, owner_id) VALUES (?, ?, ?)";
+      database.query(query, [title, author, result[0].user_id], (err) => {
+        if (err) {
+          console.log(err);
+          res.status(400).send("Error adding book");
+          return;
+        }
+        res.json("Book added successfully");
+      });
     }
-    res.json("Book added successfully");
-  });
+  );
 });
 
 app.delete("/books/:id", (req, res) => {

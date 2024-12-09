@@ -1,19 +1,23 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/navbar/Navbar";
 import axios from "axios";
 
 const Add = () => {
+  const getUser = () => {
+    const userString = localStorage.getItem("user");
+    const userUser = JSON.parse(userString);
+    return userUser?.user;
+  };
+
   const [book, setBook] = useState({
     title: "",
     author: "",
     book_condition: "",
+    username: getUser(),
   });
 
   const [error, setError] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -23,7 +27,7 @@ const Add = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:8800/addbook", book);
-      navigate("/");
+      window.location.reload();
     } catch (err) {
       console.log(err);
       setError(true);
@@ -32,9 +36,8 @@ const Add = () => {
 
   return (
     <div>
-      <Navbar /> {/* Include the Navbar */}
       <div className="form">
-        <h1>Add new book</h1>
+        <h2>Add new book</h2>
         <input
           type="text"
           placeholder="title"
@@ -46,12 +49,6 @@ const Add = () => {
           placeholder="author"
           onChange={handleChange}
           name="author"
-        />
-        <input
-          type="text"
-          placeholder="owner_id"
-          onChange={handleChange}
-          name="owner_id"
         />
         <button className="formButton" onClick={handleClick}>
           Add

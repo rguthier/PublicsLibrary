@@ -1,6 +1,5 @@
 import BookCard from "../../components/BookCard.tsx";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../addStyle.css";
@@ -40,6 +39,7 @@ const BookPage = () => {
               title={bookItem.title}
               author={bookItem.author}
               description="Description goes here"
+              isMine={false}
             />
             <div className="book" key={bookItem.book_id}>
               <button
@@ -56,9 +56,6 @@ const BookPage = () => {
           </div>
         ))}
       </div>
-      <button>
-        <Link to="/add"> Add new book</Link>
-      </button>
     </div>
   );
 };

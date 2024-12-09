@@ -34,6 +34,7 @@ const BookList = () => {
     title: string;
     author: string;
     username: string;
+    id: number;
   }
 
   return (
@@ -46,27 +47,10 @@ const BookList = () => {
             title={book.title}
             author={book.author}
             description={"Owned by" + book.username}
+            isMine={false}
+            id={book.id}
           />
         ))}
-        <BookCard
-          // image="path/to/book-cover1.jpg"
-          title="Book Title 1"
-          author="Author 1"
-          description="A brief description of Book Title 1."
-        />
-        <BookCard
-          // image="path/to/book-cover2.jpg"
-          title="Book Title 2"
-          author="Author 2"
-          description="A brief description of Book Title 2."
-        />
-        <BookCard
-          // image="path/to/book-cover3.jpg"
-          title="Book Title 3"
-          author="Author 3"
-          description="A brief description of Book Title 3."
-        />
-        {/* Add more BookCard components as needed */}
       </div>
     </section>
   );

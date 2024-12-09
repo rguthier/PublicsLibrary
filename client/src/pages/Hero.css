@@ -30,4 +30,15 @@
   z-index: 1;
 }
 
-/* Other text and button styles remain unchanged */
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: #d9e6d2;
+}

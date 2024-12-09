@@ -67,3 +67,135 @@ a {
   color: black;
   text-decoration: none;
 }
+
+.navbar-links {
+  position: sticky; /* Keep the navbar fixed at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f4f1ea; /* Background color */
+  padding: 15px 2.75%;
+  z-index: 1000; /* Ensure it stays above other elements */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Logo */
+.logo {
+  max-width: 150px;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  margin-right: 25px;
+}
+
+/* Search Box */
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  padding: 10px 0px 10px 40px; /* Space for the icon */
+  background: transparent;
+  border: 0;
+  outline: 0;
+  border-radius: 20px;
+  background-color: #d9e6d2; /* Light green background */
+  color: #2e5339; /* Text color */
+  font-size: 18px;
+  max-width: 400px;
+}
+
+.search-box input::placeholder {
+  color: #8a9b8a; /* Placeholder color */
+}
+
+.search-box i {
+  color: #2e5339;
+  position: absolute;
+  top: 50%;
+  left: 15px; /* Position the search icon */
+  pointer-events: none; /* Prevent interaction */
+  transform: translateY(-50%);
+}
+
+/* Navigation Links */
+ul {
+  flex: 1;
+  list-style: none;
+  text-align: center;
+}
+
+ul li {
+  display: inline-block;
+  margin: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px; /* Space for the underline effect */
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #4b6b4a; /* Sage green */
+  transform: scaleX(0); /* Hidden initially */
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+
+.nav-link:hover .navbar-underline {
+  transform: scaleX(1); /* Expand underline on hover */
+}
+
+/* User Account Dropdown */
+.person-acc {
+  position: relative;
+  width: 50px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.person-acc i {
+  font-size: 24px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Position below the person icon */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Adjust Content to Avoid Overlapping Fixed Navbar */
+main {
+  margin-top: 80px; /* Adjust for the navbar height */
+  padding: 1rem;
+}

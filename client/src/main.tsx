@@ -10,12 +10,13 @@ import "./index.css";
 import Root from "./routes/root";
 import ErrorPage from "./error";
 import Login from "./routes/login.js";
-import BookPage from "./sql/sqlpages/BookPage.jsx";
-import Add from "./sql/sqlpages/Add.jsx";
-import Update from "./sql/sqlpages/Update.jsx";
+import BookPage from "./pages/sqlpages/BookPage.jsx";
+import Add from "./pages/sqlpages/Add.jsx";
+import Update from "./pages/sqlpages/Update.jsx";
 import Dashboard from "./routes/dashboard.tsx";
 import { useState } from "react";
 import Register from "./routes/register.tsx";
+import Navbar from "./components/navbar/Navbar.tsx";
 
 function useToken() {
   const getToken = () => {
@@ -75,12 +76,13 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route path="/" element={<Root user={user} />} />
           <Route path="/browse" element={<BookPage />} />
           <Route path="/add" element={<Add />} />
-          <Route path="/update/:id" element={<Update />} />
+          {/* <Route path="/update/:id" element={<Update />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
         <Route element={<LoggedOutRoutes />}>

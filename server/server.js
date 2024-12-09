@@ -210,7 +210,7 @@ app.post("/yourequested", (req, res) => {
       }
       user_id = result[0].user_id;
       database.query(
-        "SELECT * FROM trade, book, user WHERE receiver_id = ? AND trade.book_id = book.book_id  AND trade.giver_id = user.user_id",
+        "SELECT * FROM trade, book, user WHERE receiver_id = ? AND trade.book_id = book.book_id  AND trade.giver_id = user.user_id AND trade_status = 'requested'",
         [user_id],
         (err, result) => {
           if (err) {
@@ -236,8 +236,60 @@ app.post("/youreceived", (req, res) => {
       }
       user_id = result[0].user_id;
       database.query(
-        "SELECT * FROM trade, book, user WHERE giver_id = ? AND trade.book_id = book.book_id AND trade.giver_id = user.user_id",
+        "SELECT * FROM trade, book, user WHERE giver_id = ? AND trade.book_id = book.book_id AND trade.giver_id = user.user_id  AND trade_status = 'requested'",
         [user_id],
+        (err, result) => {
+          if (err) {
+            console.log("error in query");
+            return;
+          }
+          res.json(result);
+        }
+      );
+    }
+  );
+});
+
+app.post("/inprogresstrades", (req, res) => {
+  user_id = null;
+  database.query(
+    "SELECT user_id FROM user WHERE username = ?",
+    [req.body.username],
+    (err, result) => {
+      if (err) {
+        console.log("error in query");
+        return;
+      }
+      user_id = result[0].user_id;
+      database.query(
+        "SELECT * FROM trade, book, user WHERE (giver_id = ? OR receiver_id = ?) AND trade.book_id = book.book_id AND trade.giver_id = user.user_id AND trade_status = 'in progress'",
+        [user_id, user_id],
+        (err, result) => {
+          if (err) {
+            console.log("error in query");
+            return;
+          }
+          res.json(result);
+        }
+      );
+    }
+  );
+});
+
+app.post("/completedtrades", (req, res) => {
+  user_id = null;
+  database.query(
+    "SELECT user_id FROM user WHERE username = ?",
+    [req.body.username],
+    (err, result) => {
+      if (err) {
+        console.log("error in query");
+        return;
+      }
+      user_id = result[0].user_id;
+      database.query(
+        "SELECT * FROM trade, book, user WHERE (giver_id = ? OR receiver_id = ?) AND trade.book_id = book.book_id AND trade.giver_id = user.user_id AND trade_status = 'complete'",
+        [user_id, user_id],
         (err, result) => {
           if (err) {
             console.log("error in query");
@@ -277,6 +329,59 @@ app.post("/traderequest", (req, res) => {
             (err, result) => {
               if (err) {
                 console.log("error in query: " + err);
+                return;
+              }
+              res.json("success");
+            }
+          );
+        }
+      );
+    }
+  );
+});
+
+app.post("/accepttrade", (req, res) => {
+  database.query(
+    "UPDATE trade SET trade_status = 'in progress' WHERE trade_id = ?",
+    req.body.trade_id,
+    (err, result) => {
+      if (err) {
+        console.log("error in query: " + err);
+        return;
+      }
+      res.json("success");
+    }
+  );
+});
+
+app.post("/completetrade", (req, res) => {
+  let book_id = null;
+  let new_owner_id = null;
+  console.log(req.body.trade_id);
+  database.query(
+    "SELECT book_id, receiver_id FROM trade WHERE trade_id = ?",
+    [req.body.trade_id],
+    (err, result) => {
+      if (err) {
+        console.log("error in query");
+        return;
+      }
+      book_id = result[0].book_id;
+      new_owner_id = result[0].receiver_id;
+      database.query(
+        "UPDATE trade SET trade_status = 'complete' WHERE trade_id = ?",
+        req.body.trade_id,
+        (err, result) => {
+          if (err) {
+            console.log("error in query");
+            return;
+          }
+          database.query(
+            "UPDATE book SET owner_id = ? WHERE book_id = ?",
+            [new_owner_id, book_id],
+            (err, result) => {
+              if (err) {
+                console.log("error in query");
                 return;
               }
               res.json("success");

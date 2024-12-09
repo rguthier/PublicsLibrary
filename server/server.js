@@ -210,7 +210,7 @@ app.post("/yourequested", (req, res) => {
       }
       user_id = result[0].user_id;
       database.query(
-        "SELECT * FROM trade WHERE receiver_id = ?",
+        "SELECT * FROM trade, book, user WHERE receiver_id = ? AND trade.book_id = book.book_id  AND trade.giver_id = user.user_id",
         [user_id],
         (err, result) => {
           if (err) {
@@ -236,7 +236,7 @@ app.post("/youreceived", (req, res) => {
       }
       user_id = result[0].user_id;
       database.query(
-        "SELECT * FROM trade WHERE giver_id = ?",
+        "SELECT * FROM trade, book, user WHERE giver_id = ? AND trade.book_id = book.book_id AND trade.giver_id = user.user_id",
         [user_id],
         (err, result) => {
           if (err) {
@@ -287,9 +287,5 @@ app.post("/traderequest", (req, res) => {
     }
   );
 });
-
-// book_id int,
-//     giver_id int,
-//     receiver_id int,
 
 app.listen(8800);

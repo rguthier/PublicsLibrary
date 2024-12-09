@@ -54,7 +54,6 @@ const BookCard = ({
             <button className="delete-button" onClick={() => handleDelete(id)}>
               Delete
             </button>
-            <button className="update-button">Update</button>
           </div>
         )}
       </div>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import BookCard from "../components/Bookcard";
 import Add from "../pages/sqlpages/Add";
+import Trades from "../pages/Trades";
 
 export default function Dashboard() {
   const getUser = () => {
@@ -72,6 +73,8 @@ export default function Dashboard() {
       </div>
       <br />
       <Add />
+      <br />
+      <Trades username={getUser()} />
     </div>
   );
 }

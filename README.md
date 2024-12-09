@@ -4,11 +4,13 @@ This project aims to build a web application that people can use to trade books.
 
 ## Getting Started
 
-Run the development server:
+To run the project locally:
 
-npm run dev
+Set up the database using the script below.
 
-Go to http://localhost:5173 to view the app
+In the client folder, run ```npm run dev```. The site will run at http://localhost:5173.
+
+In the server folder, run ```node server.js```. This will set up the express server that works with the database.
 
 ## React + TypeScript + Vite
 
